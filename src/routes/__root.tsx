@@ -17,11 +17,30 @@ interface MyRouterContext {
 export const Route = createRootRouteWithContext<MyRouterContext>()({
   head: () => ({
     meta: [
-      { charSet: 'utf-8', },
+      { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Cupid Dart' },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [
+      { rel: 'stylesheet', href: appCss },
+
+      // Google Fonts
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      {
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossOrigin: 'anonymous',
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css2?' +
+          'family=Germania+One&' +
+          'family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&' +
+          'family=Geist:wght@100..900&' +
+          'display=swap',
+      },
+    ],
   }),
 
   shellComponent: RootDocument,

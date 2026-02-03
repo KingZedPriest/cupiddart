@@ -1,20 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-body {
-  @apply m-0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@theme {
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1400px;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
 
 :root {
   /* Base */
@@ -126,11 +119,31 @@ code {
 
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  body {
+    @apply bg-background m-0 text-foreground;
+    @apply text-xs md:text-sm xl:text-base;
+    font-family: "Geist", system-ui, sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  code {
+    font-family:
+      source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Germania One", system-ui, sans-serif;
+  }
+
+  .font-heading {
+    font-family: "Fraunces", serif;
+  }
+
+  .font-body {
+    font-family: "Geist", system-ui, sans-serif;
   }
 }
