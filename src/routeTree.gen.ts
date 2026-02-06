@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PreferencesRouteImport } from './routes/preferences'
 import { Route as ComposeRouteImport } from './routes/compose'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PreferencesRoute = PreferencesRouteImport.update({
+  id: '/preferences',
+  path: '/preferences',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ComposeRoute = ComposeRouteImport.update({
   id: '/compose',
   path: '/compose',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/compose': typeof ComposeRoute
+  '/preferences': typeof PreferencesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/compose': typeof ComposeRoute
+  '/preferences': typeof PreferencesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/compose': typeof ComposeRoute
+  '/preferences': typeof PreferencesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/compose'
+  fullPaths: '/' | '/compose' | '/preferences'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/compose'
-  id: '__root__' | '/' | '/compose'
+  to: '/' | '/compose' | '/preferences'
+  id: '__root__' | '/' | '/compose' | '/preferences'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ComposeRoute: typeof ComposeRoute
+  PreferencesRoute: typeof PreferencesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/preferences': {
+      id: '/preferences'
+      path: '/preferences'
+      fullPath: '/preferences'
+      preLoaderRoute: typeof PreferencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/compose': {
       id: '/compose'
       path: '/compose'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ComposeRoute: ComposeRoute,
+  PreferencesRoute: PreferencesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

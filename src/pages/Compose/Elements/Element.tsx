@@ -55,6 +55,7 @@ const Element = ({ zIndex, onClose }: { zIndex: number, onClose: () => void }) =
                             ))}
                         </div>
                     </section>
+
                     <section className="mt-6 md:mt-7 xl:mt-8">
                         <p className="font-medium text-[8px] md:text-[9px] xl:text-[10px] text-accent-foreground/40">Image Frame (5) <span className="text-destructive">Coming Soon</span></p>
                         <div className="gap-8 grid grid-cols-5 mt-2">
@@ -63,6 +64,7 @@ const Element = ({ zIndex, onClose }: { zIndex: number, onClose: () => void }) =
                             ))}
                         </div>
                     </section>
+                    
                     <section className="mt-6 md:mt-7 xl:mt-8">
                         <div className="flex justify-between items-center">
                             <p className="font-medium text-[8px] md:text-[9px] xl:text-[10px] text-accent-foreground/40">Stickers (18)</p>

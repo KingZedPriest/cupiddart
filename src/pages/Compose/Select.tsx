@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
+
+// Stores
+import { useEditorStore } from "@/stores/editor.store";
 
 // UIs
 import Tag from "@/components/Tag";
@@ -12,6 +16,7 @@ import { ArrowRight, ElementPlus, Text } from "iconsax-reactjs";
 
 const Select = () => {
 
+    const { layout } = useEditorStore();
     const [options, setOptions] = useState<"bg" | "elements" | "text" | null>(null);
 
     // Functions
@@ -50,10 +55,10 @@ const Select = () => {
 
                 {options !== null && <div className="hidden min-[600px]:block bg-[#E5E7E3] w-0.5"></div>}
                 <div className="p-1">
-                    <button className="flex items-center gap-x-2 bg-destructive hover:bg-white px-3 py-2 border border-destructive rounded-full text-white hover:text-destructive duration-200 cursor-pointer">
+                    <Link to="/preferences" disabled={!layout.body.trim() || !layout.title.trim()} className="flex items-center gap-x-2 bg-destructive hover:bg-white px-3 py-2 border border-destructive rounded-full text-white hover:text-destructive duration-200 cursor-pointer">
                         Continue
                         <ArrowRight className="size-4" />
-                    </button>
+                    </Link>
                 </div>
             </main>
             {options === "bg" && <BackgroundSelector zIndex={zIndex} onClose={() => toggleOption(null)} />}

@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 
-// Components
+// UIs
 import Compose from "@/pages/Compose";
 
 export const Route = createFileRoute('/compose')({

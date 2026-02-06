@@ -1,4 +1,4 @@
-const Align = () => {
+const index = () => {
     return ( 
         <main>
             
@@ -6,4 +6,4 @@ const Align = () => {
      );
 }
  
-export default Align;
+export default index;
