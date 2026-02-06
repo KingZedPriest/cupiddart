@@ -7,12 +7,12 @@ export const FONTS = [
   {
     id: "poppins",
     label: "Poppins",
-    fontFamily: '"Poppins", sans-serif;',
+    fontFamily: '"Poppins", sans-serif',
   },
    {
     id: "caveat",
     label: "Caveat",
-    fontFamily: '"Caveat", cursive;',
+    fontFamily: '"Caveat", cursive',
   },
    {
     id: "patrick",
@@ -22,6 +22,6 @@ export const FONTS = [
    {
     id: "dmSans",
     label: "DM Sans",
-    fontFamily: '"DM Sans", sans-serif;',
+    fontFamily: '"DM Sans", sans-serif',
   },
 ];

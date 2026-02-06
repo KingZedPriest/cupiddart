@@ -33,7 +33,7 @@ declare type Font = {
   id: string;
   label: string;
   fontFamily: string;
-  horizontalAlign: string;
+  horizontalAlign: "left" | "right" | "center";
   verticalAlign: string;
   size: number;
 };
@@ -47,4 +47,5 @@ declare type LetterLayout = {
   background: Background;
   stickers: Sticker[];
   font: Font;
+  preview: boolean;
 };

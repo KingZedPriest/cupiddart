@@ -136,6 +136,7 @@
     font-family:
       source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
+
 }
 
 @layer utilities {
@@ -149,5 +150,11 @@
 
   .font-body {
     font-family: "Geist", system-ui, sans-serif;
+  }
+
+  .editor-body:empty::before {
+    content: attr(data-placeholder);
+    color: #dddddd;
+    pointer-events: none;
   }
 }

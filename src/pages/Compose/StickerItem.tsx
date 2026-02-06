@@ -1,5 +1,6 @@
 import { Rnd } from "react-rnd";
 import type { RefObject } from "react";
+import { useState } from "react";
 
 // Stores
 import { useEditorStore } from "@/stores/editor.store";
@@ -15,11 +16,15 @@ type Props = {
 export default function StickerItem({ sticker, parentRef }: Props) {
 
     const { updateSticker, removeSticker } = useEditorStore();
+    const [edit, setEdit] = useState<boolean>(true);
 
     if (!parentRef.current) return null;
 
     const pw = parentRef.current.offsetWidth;
     const ph = parentRef.current.offsetHeight;
+
+    // Function
+    const toggleEdit = () => setEdit((prev) => !prev);
 
     return (
         <Rnd bounds="parent"
@@ -50,21 +55,25 @@ export default function StickerItem({ sticker, parentRef }: Props) {
             }}
             lockAspectRatio
             style={{ zIndex: sticker.zIndex }}
-            className="border border-primary rounded-md">
+            className={`${edit ? "border border-primary rounded-md" : ""} `}>
 
-            <div className="relative w-full h-full">
+            <div onClick={toggleEdit} className="relative w-full h-full">
 
-                <button onClick={() => updateSticker(sticker.id, { rotation: (sticker.rotation + 30) % 360 })} className="-top-3 -left-3 absolute flex justify-center items-center bg-black p-1 rounded-full text-white cursor-grab">
-                    <RotateRight className="size-4" />
-                </button>
+                {edit &&
+                    <>
+                        <button onClick={() => updateSticker(sticker.id, { rotation: (sticker.rotation + 30) % 360 })} className="-top-3 -left-3 absolute flex justify-center items-center bg-black p-1 rounded-full text-white cursor-grab">
+                            <RotateRight className="size-4" />
+                        </button>
 
-                <button className="-top-3 -right-3 absolute flex justify-center items-center bg-black p-1 rounded-full text-white">
-                    <Maximize4 className="size-4" />
-                </button>
+                        <button className="-top-3 -right-3 absolute flex justify-center items-center bg-black p-1 rounded-full text-white">
+                            <Maximize4 className="size-4" />
+                        </button>
 
-                <button onClick={() => removeSticker(sticker.id)} className="-right-3 -bottom-3 absolute flex justify-center items-center bg-black hover:bg-destructive p-1 rounded-full text-white duration-200 cursor-pointer">
-                    <Trash className="size-4" />
-                </button>
+                        <button onClick={() => removeSticker(sticker.id)} className="-right-3 -bottom-3 absolute flex justify-center items-center bg-black hover:bg-destructive p-1 rounded-full text-white duration-200 cursor-pointer">
+                            <Trash className="size-4" />
+                        </button>
+                    </>
+                }
 
                 {/* Sticker image */}
                 <img src={sticker.assetUrl} className="w-full h-full object-contain pointer-events-none select-none" draggable={false} style={{ transform: `rotate(${sticker.rotation}deg)` }} />

@@ -21,6 +21,9 @@ type EditorState = {
     addSticker: (sticker: Sticker) => void;
     updateSticker: (id: string, patch: Partial<Sticker>) => void;
     removeSticker: (id: string) => void;
+
+    // Preview
+    editPreview: (value: boolean) => void;
 };
 
 export const useEditorStore = create<EditorState>((set) => ({
@@ -29,7 +32,7 @@ export const useEditorStore = create<EditorState>((set) => ({
         body: "",
         media: [],
         paper: "/paper/paper3.png",
-        background: { type: "image", assetUrl: "/background/static/pink_red.png" },
+        background: { type: "image", assetUrl: "/background/static/static1.png" },
         stickers: [],
         font: {
             id: "fraunces",
@@ -39,6 +42,7 @@ export const useEditorStore = create<EditorState>((set) => ({
             verticalAlign: "",
             size: 16,
         },
+        preview: false,
     },
 
     /* content setters */
@@ -116,4 +120,6 @@ export const useEditorStore = create<EditorState>((set) => ({
                 stickers: s.layout.stickers.filter((st) => st.id !== id),
             },
         })),
+
+    editPreview: (value) => set((s) => ({ layout: { ...s.layout, preview: value } })),
 }));

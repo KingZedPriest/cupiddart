@@ -10,7 +10,7 @@ const Header = () => {
     const show = false;
 
     return (
-        <main className="flex justify-between items-center">
+        <main className="flex sm:flex-row flex-col justify-between items-center gap-y-2">
             <section className="flex items-center gap-x-2 bg-white drop-shadow-lg p-2 rounded-4xl">
                 <img src="/favicon.png" alt="favicon" className="size-6" />
                 {show && <ArrowDown2 className="size-4" />}
