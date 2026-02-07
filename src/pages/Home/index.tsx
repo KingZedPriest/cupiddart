@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 
+// Constants
+import { LOVE_ICONS } from "@/constants/editing";
+
 // Icons
 import { MessageEdit } from "iconsax-reactjs";
 
-
-const LOVE_ICONS = ["❤️", "💖", "💕", "💌"];
 
 type Particle = {
     id: number;
@@ -63,12 +64,12 @@ const index = () => {
     }, []);
 
     return (
-        <main className="relative place-content-center grid bg-[url(/landingPage.svg)] bg-cover bg-no-repeat w-full h-dvh overflow-hidden">
+        <main className="relative place-content-center grid bg-[url('https://res.cloudinary.com/dpmx02shl/image/upload/v1770472324/cupiddart/landing/landingPage_aweo0t.svg')] bg-cover bg-no-repeat w-full h-dvh overflow-hidden">
             <img src="/logo.svg" alt="Cupid Dart Logo" className="top-2 left-1/2 absolute w-20 md:w-24 xl:w-28 -translate-x-1/2" />
-            <img src="/topLeft.svg" alt="heart image" className="top-0 left-0 absolute h-52 sm:h-64 md:h-80 lg:h-fit" />
-            <img src="/topRight.svg" alt="heart image" className="top-0 -right-10 sm:-right-6 md:-right-2 lg:right-0 absolute h-36 sm:h-52 md:h-72 lg:h-fit" />
-            <img src="/bottomLeft.svg" alt="heart image" className="bottom-0 -left-10 absolute h-40 sm:h-48 md:h-64 lg:h-72 xl:h-fit" />
-            <img src="/bottomRight.svg" alt="heart image" className="-right-14 xl:right-0 bottom-0 absolute w-44 sm:w-60 lg:w-fit h-32 sm:h-40 md:h-44 lg:h-fit" />
+            <img src="https://res.cloudinary.com/dpmx02shl/image/upload/v1770472331/cupiddart/landing/topLeft_ohppwv.svg" alt="heart image" className="top-0 left-0 absolute h-52 sm:h-64 md:h-80 lg:h-fit" />
+            <img src="https://res.cloudinary.com/dpmx02shl/image/upload/v1770472331/cupiddart/landing/topRight_ltzyvn.svg" alt="heart image" className="top-0 -right-10 sm:-right-6 md:-right-2 lg:right-0 absolute h-36 sm:h-52 md:h-72 lg:h-fit" />
+            <img src="https://res.cloudinary.com/dpmx02shl/image/upload/v1770472324/cupiddart/landing/bottomLeft_us2bye.svg" alt="heart image" className="bottom-0 -left-10 absolute h-40 sm:h-48 md:h-64 lg:h-72 xl:h-fit" />
+            <img src="https://res.cloudinary.com/dpmx02shl/image/upload/v1770472323/cupiddart/landing/bottomRight_f7twpu.svg" alt="heart image" className="-right-14 xl:right-0 bottom-0 absolute w-44 sm:w-60 lg:w-fit h-32 sm:h-40 md:h-44 lg:h-fit" />
             <div className="space-y-2 text-center">
                 <h1 className="font-display text-white text-5xl md:text-6xl lg:text-7xl xl:text-8xl">Write Romantic</h1>
                 <h1 className="font-display text-white text-5xl md:text-6xl lg:text-7xl xl:text-8xl">Love Letters</h1>

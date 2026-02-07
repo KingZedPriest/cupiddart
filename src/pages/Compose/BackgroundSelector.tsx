@@ -1,21 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 
-// Stores
+// Stores and Constants
 import { useEditorStore } from "@/stores/editor.store";
+import { ANIMATED, COLOURS, STATIC } from "@/constants/editing";
 
 // Icons
 import { CloseCircle } from "iconsax-reactjs";
 
-const COLOURS = ["#EEE5F7", "#CAA8F5", "#D90368", "#8125AF", "#66ADFF"];
-const STATIC = ["/background/static/static.jpg", "/background/static/static1.png", "/background/static/static2.jpg", "/background/static/static3.jpg", "/background/static/static4.jpg"]
-const ANIMATED = [
-    { preview: "/background/animated/animated.png", video: "/background/animated/animated.mp4" },
-    { preview: "/background/animated/animated1.png", video: "/background/animated/animated1.mp4" },
-    { preview: "/background/animated/animated2.png", video: "/background/animated/animated2.mp4" },
-    { preview: "/background/animated/animated3.png", video: "/background/animated/animated3.mp4" },
-    { preview: "/background/animated/animated4.png", video: "/background/animated/animated4.mp4" },
-    { preview: "/background/animated/animated5.png", video: "/background/animated/animated5.mp4" }
-]
+
 
 export default function BackgroundSelector({ zIndex, onClose }: { zIndex: number, onClose: () => void }) {
 

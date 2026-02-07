@@ -4,14 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // Stores and Constants
 import { useEditorStore } from "@/stores/editor.store";
-import { STICKERS } from "@/constants/stickers";
+import { FRAMES, PAPERS, STICKERS } from "@/constants/editing";
 
 // Icons
 import { CloseCircle } from "iconsax-reactjs";
 
-
-const PAPERS = ["/paper/paper.png", "/paper/paper1.png", "/paper/paper2.png", "/paper/paper3.png", "/paper/paper4.png"];
-const FRAMES = ["/frame/frame.png", "/frame/frame1.png", "/frame/frame2.png", "/frame/frame3.png", "/frame/frame4.png"];
 const PREV_STICKERS = [STICKERS[2], STICKERS[6], STICKERS[5], STICKERS[4], STICKERS[0]];
 const OTHER_STICKERS = STICKERS.filter(sticker => !PREV_STICKERS.includes(sticker));
 
