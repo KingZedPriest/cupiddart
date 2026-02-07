@@ -62,15 +62,15 @@ const Font = () => {
 
                 {open === "horizontal" && (
                     <section className="bottom-14 left-[55%] absolute flex gap-x-2 bg-white p-1 rounded-full">
-                        <AlignButton onClick={() => updateFont({ horizontalAlign: "left" })}>
+                        <AlignButton highlight={currentFont.verticalAlign === "left"} onClick={() => updateFont({ horizontalAlign: "left" })}>
                             <AlignLeft className="size-5" />
                         </AlignButton>
 
-                        <AlignButton onClick={() => updateFont({ horizontalAlign: "center" })}>
+                        <AlignButton highlight={currentFont.verticalAlign === "center"} onClick={() => updateFont({ horizontalAlign: "center" })}>
                             <AlignHorizontally className="size-5" />
                         </AlignButton>
 
-                        <AlignButton onClick={() => updateFont({ horizontalAlign: "right" })}>
+                        <AlignButton highlight={currentFont.horizontalAlign === "right"} onClick={() => updateFont({ horizontalAlign: "right" })}>
                             <AlignRight className="size-5" />
                         </AlignButton>
                     </section>
@@ -84,15 +84,15 @@ const Font = () => {
 
                 {open === "vertical" && (
                     <section className="bottom-14 left-[62%] absolute flex gap-x-2 bg-white p-1 rounded-full">
-                        <AlignButton onClick={() => updateFont({ verticalAlign: "flex-start" })}>
+                        <AlignButton highlight={currentFont.verticalAlign === "flex-start"} onClick={() => updateFont({ verticalAlign: "flex-start" })}>
                             <AlignTop className="size-5" />
                         </AlignButton>
 
-                        <AlignButton onClick={() => updateFont({ verticalAlign: "center" })}>
+                        <AlignButton highlight={currentFont.verticalAlign === "center"} onClick={() => updateFont({ verticalAlign: "center" })}>
                             <AlignVertically className="size-5" />
                         </AlignButton>
 
-                        <AlignButton onClick={() => updateFont({ verticalAlign: "flex-end" })}>
+                        <AlignButton highlight={currentFont.verticalAlign === "flex-end"} onClick={() => updateFont({ verticalAlign: "flex-end" })}>
                             <AlignBottom className="size-5" />
                         </AlignButton>
                     </section>
@@ -104,8 +104,8 @@ const Font = () => {
 
 export default Font;
 
-const AlignButton = ({ onClick, children }: { onClick: () => void; children: React.ReactNode }) => (
-    <div onClick={onClick} className="place-content-center grid border border-[#E5E7E3] hover:border-destructive rounded-full size-8 hover:text-destructive duration-200 cursor-pointer">
+const AlignButton = ({ highlight, onClick, children }: { highlight: boolean, onClick: () => void; children: React.ReactNode }) => (
+    <div onClick={onClick} className={`place-content-center grid ${highlight ? "border-destructive text-destructive" : "border-[#E5E7E3] hover:border-destructive hover:text-destructive"} border rounded-full size-8 duration-200 cursor-pointer`}>
         {children}
     </div>
 );

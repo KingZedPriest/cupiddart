@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 // Stores
 import { useEditorStore } from "@/stores/editor.store";
@@ -11,17 +11,34 @@ const MAX_TITLE = 40;
 const MAX_BODY = 1500;
 
 export default function EditorCanvas() {
-
     const ref = useRef<HTMLDivElement>(null);
     const editorRef = useRef<HTMLDivElement>(null);
+
     const { layout, setTitle, setBody } = useEditorStore();
     const font = layout.font;
 
-    // Functions
+    // Track when canvas has valid dimensions
+    const [canvasReady, setCanvasReady] = useState<boolean>(false);
+
+    // Initialize contentEditable once
     useEffect(() => {
         if (editorRef.current && editorRef.current.innerText !== layout.body) {
             editorRef.current.innerText = layout.body;
         }
+    }, []);
+
+    // Observe canvas size
+    useEffect(() => {
+        if (!ref.current) return;
+
+        const observer = new ResizeObserver(([entry]) => {
+            const { width, height } = entry.contentRect;
+            setCanvasReady(width > 0 && height > 0);
+        });
+
+        observer.observe(ref.current);
+
+        return () => observer.disconnect();
     }, []);
 
     // Handle before input
@@ -34,7 +51,6 @@ export default function EditorCanvas() {
 
     // Handle Paste
     const handlePaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
-
         e.preventDefault();
 
         const pasteText = e.clipboardData.getData("text");
@@ -52,14 +68,11 @@ export default function EditorCanvas() {
 
         const range = selection.getRangeAt(0);
 
-        // Delete selected text (if any)
         range.deleteContents();
 
-        // Insert new text node
         const textNode = document.createTextNode(textToInsert);
         range.insertNode(textNode);
 
-        // Move cursor to end of inserted text
         range.setStartAfter(textNode);
         range.setEndAfter(textNode);
 
@@ -74,31 +87,60 @@ export default function EditorCanvas() {
         setBody(text);
     };
 
-    // Handle Enter
+    // Handle Enter (Stop Working)
     const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (e.key === "Enter" && !e.shiftKey) {
             e.preventDefault();
         }
     };
 
-
-
     return (
         <main>
             <div ref={ref} className="relative bg-white mx-auto mt-15 border border-[#E5E7E3] w-full max-w-114.75 h-162.5">
+
                 <Paper />
-                {layout.stickers.map((s) => (
-                    <StickerItem key={s.id} sticker={s} parentRef={ref} />
-                ))}
+
                 <section className="relative p-4 md:p-5 xl:p-6">
+                    <input
+                        maxLength={MAX_TITLE}
+                        value={layout.title}
+                        type="text"
+                        style={{ fontFamily: font.fontFamily }}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="px-4 py-2 focus:border focus:border-primary rounded-md outline-0 w-full placeholder:font-semibold placeholder:text-[#DDDDDD] text-base placeholder:text-base md:text-lg md:placeholder:text-lg xl:text-xl xl:placeholder:text-xl"
+                        placeholder="Message Title"
+                    />
 
-                    <input maxLength={MAX_TITLE} value={layout.title} type="text" style={{ fontFamily: font.fontFamily}} onChange={(e) => setTitle(e.target.value)} className="px-4 py-2 focus:border focus:border-primary rounded-md outline-0 w-full placeholder:font-semibold placeholder:text-[#DDDDDD] text-base placeholder:text-base md:text-lg md:placeholder:text-lg xl:text-xl xl:placeholder:text-xl" placeholder="Message Title" />
-
-                    <div ref={editorRef} contentEditable suppressContentEditableWarning className="p-4 focus:border focus:border-primary rounded-sm outline-none w-full h-140 break-all editor-body" style={{ fontFamily: font.fontFamily, fontSize: font.size, justifyContent: font.horizontalAlign, display: "flex", alignItems: font.verticalAlign }} data-placeholder="Write A Message" onBeforeInput={handleBeforeInput} onPaste={handlePaste} onInput={handleInput} onKeyDown={handleKeyDown} />
-
+                    <div
+                        ref={editorRef}
+                        contentEditable
+                        suppressContentEditableWarning
+                        className="p-4 focus:border focus:border-primary rounded-sm outline-none w-full h-140 overflow-y-auto break-all hide-scrollbar editor-body"
+                        style={{
+                            fontFamily: font.fontFamily,
+                            fontSize: font.size,
+                            justifyContent: font.horizontalAlign,
+                            display: "flex",
+                            alignItems: font.verticalAlign,
+                        }}
+                        data-placeholder="Write A Message"
+                        onBeforeInput={handleBeforeInput}
+                        onPaste={handlePaste}
+                        onInput={handleInput}
+                        onKeyDown={handleKeyDown}
+                    />
                 </section>
+
+                {/* Render stickers only when canvas is ready */}
+                {canvasReady &&
+                    layout.stickers.map((s) => (
+                        <StickerItem key={s.id} sticker={s} parentRef={ref} />
+                    ))}
             </div>
-            <p className="relative my-4 font-medium text-[#4F4F4F] text-[10px] md:text-[11px] xl:text-xs text-center">Word Count: {layout.body.length}/{MAX_BODY}</p>
+
+            <p className="relative my-4 font-medium text-[#4F4F4F] text-[10px] md:text-[11px] xl:text-xs text-center">
+                Word Count: {layout.body.length}/{MAX_BODY}
+            </p>
         </main>
     );
 }

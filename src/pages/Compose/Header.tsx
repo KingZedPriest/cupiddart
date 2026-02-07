@@ -6,7 +6,9 @@ import { Eye, ArrowDown2, LoginCurve } from "iconsax-reactjs";
 
 const Header = () => {
 
-    const { title } = useEditorStore((s) => s.layout);
+    const { layout, editPreview } = useEditorStore();
+    const title = layout.title;
+
     const show = false;
 
     return (
@@ -20,7 +22,7 @@ const Header = () => {
             </section>
             <section className="flex justify-between gap-x-5 bg-white drop-shadow-lg rounded-4xl font-semibold text-[11px] md:text-xs xl:text-sm text-accent-foreground">
                 <div className="p-1">
-                    <button className="flex items-center gap-x-2 bg-white px-3 py-2 border border-[#E8E8E8] rounded-full cursor-pointer">
+                    <button onClick={() => editPreview(!layout.preview)} className="flex items-center gap-x-2 bg-white px-3 py-2 border border-[#E8E8E8] rounded-full cursor-pointer">
                         Preview
                         <Eye className="size-4" />
                     </button>

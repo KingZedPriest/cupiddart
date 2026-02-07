@@ -157,4 +157,13 @@
     color: #dddddd;
     pointer-events: none;
   }
+
+  .hide-scrollbar {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    scrollbar-width: none;
+  }
+
 }

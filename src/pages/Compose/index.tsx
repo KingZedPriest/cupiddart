@@ -1,11 +1,19 @@
+// Stores
+import { useEditorStore } from "@/stores/editor.store";
+
 // UIs
 import Header from "./Header";
 import BackgroundLayer from "./BackgroundLayer";
-import EditorCanvas from "./EditorCanvas"
+import EditorCanvas from "./EditorCanvas";
 import Select from "./Select";
+import Preview from "./Preview";
 
-const index = () => {
-    return (
+const Index = () => {
+    const preview = useEditorStore((s) => s.layout.preview);
+
+    return preview ? (
+        <Preview />
+    ) : (
         <main className="p-2">
             <BackgroundLayer />
             <Header />
@@ -13,6 +21,6 @@ const index = () => {
             <Select />
         </main>
     );
-}
+};
 
-export default index;
+export default Index;
