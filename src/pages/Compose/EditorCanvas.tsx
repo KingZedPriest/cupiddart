@@ -121,6 +121,7 @@ export default function EditorCanvas() {
                             fontSize: font.size,
                             justifyContent: font.horizontalAlign,
                             display: "flex",
+                            textAlign: font.horizontalAlign,
                             alignItems: font.verticalAlign,
                         }}
                         data-placeholder="Write A Message"

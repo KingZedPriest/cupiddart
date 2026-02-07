@@ -9,6 +9,7 @@ import Select from "./Select";
 import Preview from "./Preview";
 
 const Index = () => {
+    
     const preview = useEditorStore((s) => s.layout.preview);
 
     return preview ? (

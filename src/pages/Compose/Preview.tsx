@@ -21,7 +21,7 @@ export default function Preview() {
         <main className="relative p-2">
             <BackgroundLayer />
 
-            <CloseCircle onClick={() => editPreview(false)} variant="Bold" className="top-4 right-4 z-50 fixed size-6 text-destructive cursor-pointer" />
+            <CloseCircle onClick={() => editPreview(false)} variant="Bold" className="top-4 right-4 z-50 fixed bg-white size-7 text-destructive cursor-pointer" />
 
             <section ref={ref} className="relative bg-white mx-auto mt-20 border border-[#E5E7E3] w-full max-w-114.75 h-162.5 overflow-hidden">
                 <Paper />
@@ -41,16 +41,14 @@ export default function Preview() {
                         </h1>
                     )}
 
-                    <div className="h-140 overflow-y-auto hide-scrollbar">
-                        {layout.body && (
-                            <p className="px-4 py-2 text-sm md:text-base xl:text-lg" style={{
-                                fontFamily: font.fontFamily, fontSize: font.size, textAlign: font.horizontalAlign,
-                                whiteSpace: "pre-wrap", display: "flex", alignItems: font.verticalAlign,
-                            }}>
-                                {layout.body}
-                            </p>
-                        )}
-                    </div>
+                    {layout.body && (
+                        <div className="px-4 py-2 h-140 overflow-y-auto text-sm md:text-base xl:text-lg hide-scrollbar" style={{
+                            fontFamily: font.fontFamily, fontSize: font.size, textAlign: font.horizontalAlign,
+                            whiteSpace: "pre-wrap", display: "flex", alignItems: font.verticalAlign,
+                        }}>
+                            {layout.body}
+                        </div>
+                    )}
                 </section>
             </section>
         </main>

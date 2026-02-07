@@ -62,11 +62,11 @@ const Font = () => {
 
                 {open === "horizontal" && (
                     <section className="bottom-14 left-[55%] absolute flex gap-x-2 bg-white p-1 rounded-full">
-                        <AlignButton highlight={currentFont.verticalAlign === "left"} onClick={() => updateFont({ horizontalAlign: "left" })}>
+                        <AlignButton highlight={currentFont.horizontalAlign === "left"} onClick={() => updateFont({ horizontalAlign: "left" })}>
                             <AlignLeft className="size-5" />
                         </AlignButton>
 
-                        <AlignButton highlight={currentFont.verticalAlign === "center"} onClick={() => updateFont({ horizontalAlign: "center" })}>
+                        <AlignButton highlight={currentFont.horizontalAlign === "center"} onClick={() => updateFont({ horizontalAlign: "center" })}>
                             <AlignHorizontally className="size-5" />
                         </AlignButton>
 

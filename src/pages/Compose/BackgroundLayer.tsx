@@ -8,7 +8,7 @@ export default function BackgroundLayer() {
     switch (background.type) {
         case "color":
             return (
-                <div className="absolute inset-0" style={{ background: background.value }} />
+                <div className="fixed inset-0" style={{ background: background.value }} />
             );
 
         case "image":
