@@ -1,13 +1,7 @@
 [build]
-  command = "bun run build"
-  publish = "dist"
-
+  command = "vite build"
+  dir = "dist/client"
 [dev]
-  command = "bun run dev"
-  targetPort = 5173
+  command = "npm run dev"
+  targetPort = 3000
   port = 8888
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
