@@ -38,14 +38,27 @@ declare type Font = {
   size: number;
 };
 
+// Preferences
+declare type Preferences = {
+  reveal: "now" | "later" | "never";
+  send: "now" | "later";
+  date?: string;
+  time?: string;
+  recipientEmail: string;
+  name: string;
+  hint?: string;
+  email: string;
+}
+
 // Letter Layout
 declare type LetterLayout = {
   title: string;
   body: string;
-  media: Picture [];
+  media: Picture[];
   paper: string;
   background: Background;
   stickers: Sticker[];
   font: Font;
   preview: boolean;
+  preferences: Preferences;
 };

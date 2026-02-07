@@ -24,6 +24,9 @@ type EditorState = {
 
     // Preview
     editPreview: (value: boolean) => void;
+
+    // Preferences
+    updatePreference: (preference: Partial<Preferences>) => void;
 };
 
 export const useEditorStore = create<EditorState>((set) => ({
@@ -43,6 +46,16 @@ export const useEditorStore = create<EditorState>((set) => ({
             size: 16,
         },
         preview: false,
+        preferences: {
+            reveal: "now",
+            send: "now",
+            date: "",
+            time: "",
+            recipientEmail: "",
+            name: "",
+            hint: "",
+            email: "",
+        }
     },
 
     /* content setters */
@@ -122,4 +135,12 @@ export const useEditorStore = create<EditorState>((set) => ({
         })),
 
     editPreview: (value) => set((s) => ({ layout: { ...s.layout, preview: value } })),
+
+    updatePreference: (preference) =>
+        set((s) => ({
+            layout: {
+                ...s.layout,
+                preferences: { ...s.layout.preferences, ...preference },
+            },
+        })),
 }));
