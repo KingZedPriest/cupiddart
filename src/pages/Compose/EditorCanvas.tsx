@@ -105,7 +105,7 @@ export default function EditorCanvas() {
                         maxLength={MAX_TITLE}
                         value={layout.title}
                         type="text"
-                        style={{ fontFamily: font.fontFamily }}
+                        style={{ fontFamily: font.fontFamily, textAlign: font.horizontalAlign }}
                         onChange={(e) => setTitle(e.target.value)}
                         className="px-4 py-2 focus:border focus:border-primary rounded-md outline-0 w-full placeholder:font-semibold placeholder:text-[#DDDDDD] text-base placeholder:text-base md:text-lg md:placeholder:text-lg xl:text-xl xl:placeholder:text-xl"
                         placeholder="Message Title"
@@ -115,7 +115,7 @@ export default function EditorCanvas() {
                         ref={editorRef}
                         contentEditable
                         suppressContentEditableWarning
-                        className="p-4 focus:border focus:border-primary rounded-sm outline-none w-full h-140 overflow-y-auto break-all hide-scrollbar editor-body"
+                        className="p-4 focus:border focus:border-primary rounded-sm outline-none w-full h-140 overflow-y-auto break-normal whitespace-pre-wrap hide-scrollbar editor-body"
                         style={{
                             fontFamily: font.fontFamily,
                             fontSize: font.size,

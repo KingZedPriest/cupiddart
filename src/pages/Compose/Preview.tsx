@@ -36,7 +36,7 @@ export default function Preview() {
                 <section className="relative p-4 md:p-5 xl:p-6">
                     {layout.title && (
                         <h1 className="px-4 py-2 font-semibold text-base md:text-lg xl:text-xl"
-                            style={{ fontFamily: font.fontFamily, textAlign: font.horizontalAlign, }}>
+                            style={{ fontFamily: font.fontFamily, textAlign: font.horizontalAlign }}>
                             {layout.title}
                         </h1>
                     )}

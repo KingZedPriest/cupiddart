@@ -34,8 +34,8 @@ export const useEditorStore = create<EditorState>((set) => ({
         title: "",
         body: "",
         media: [],
-        paper: "/paper/paper3.png",
-        background: { type: "image", assetUrl: "/background/static/static1.png" },
+        paper: "https://res.cloudinary.com/dpmx02shl/image/upload/v1770471649/cupiddart/paper/paper3_rraswc.png",
+        background: { type: "image", assetUrl: "https://res.cloudinary.com/dpmx02shl/image/upload/v1770471639/cupiddart/background/static/static1_spenue.png" },
         stickers: [],
         font: {
             id: "fraunces",
