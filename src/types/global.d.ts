@@ -44,6 +44,7 @@ declare type Preferences = {
   send: "now" | "later";
   date?: string;
   time?: string;
+  timezone?: string;
   recipientEmail: string;
   name: string;
   hint?: string;

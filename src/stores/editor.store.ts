@@ -52,6 +52,7 @@ export const useEditorStore = create<EditorState>((set) => ({
             send: "now",
             date: "",
             time: "",
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             recipientEmail: "",
             name: "",
             hint: "",

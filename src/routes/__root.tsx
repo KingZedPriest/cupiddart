@@ -7,7 +7,10 @@ import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 import type { QueryClient } from '@tanstack/react-query';
 
 // Styles
-import appCss from '../styles.css?url'
+import appCss from '../styles.css?url';
+
+// UIs
+import NotFound from "@/pages/NotFound";
 
 
 interface MyRouterContext {
@@ -15,6 +18,7 @@ interface MyRouterContext {
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
+  notFoundComponent: () => <NotFound />,
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
