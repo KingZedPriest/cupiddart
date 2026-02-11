@@ -18,7 +18,7 @@ type EditorState = {
     updateFont: (font: Partial<Font>) => void;
 
     /* stickers */
-    addSticker: (sticker: Sticker) => void;
+    addSticker: (sticker: Omit<Sticker, "zIndex">) => void;
     updateSticker: (id: string, patch: Partial<Sticker>) => void;
     removeSticker: (id: string) => void;
 
@@ -31,6 +31,7 @@ type EditorState = {
 
 export const useEditorStore = create<EditorState>((set) => ({
     layout: {
+        currentZIndex: 1,
         title: "",
         body: "",
         media: [],
@@ -109,12 +110,20 @@ export const useEditorStore = create<EditorState>((set) => ({
 
     /* stickers */
     addSticker: (sticker) =>
-        set((s) => ({
-            layout: {
-                ...s.layout,
-                stickers: [...s.layout.stickers, sticker],
-            },
-        })),
+        set((s) => {
+            const nextZ = s.layout.currentZIndex + 1;
+            return {
+                currentZIndex: nextZ,
+                layout: {
+                    ...s.layout,
+                    stickers: [
+                        ...s.layout.stickers,
+                        { ...sticker, zIndex: nextZ },
+                    ],
+                },
+            };
+        }),
+
 
     updateSticker: (id, patch) =>
         set((s) => ({

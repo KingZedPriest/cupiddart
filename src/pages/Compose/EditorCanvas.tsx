@@ -96,7 +96,7 @@ export default function EditorCanvas() {
 
     return (
         <main>
-            <div ref={ref} className="relative bg-white mx-auto mt-15 border border-[#E5E7E3] w-full max-w-114.75 h-162.5">
+            <div ref={ref} className="relative bg-white mx-auto mt-28 border border-[#E5E7E3] w-full max-w-114.75 h-162.5">
 
                 <Paper />
 
@@ -139,7 +139,7 @@ export default function EditorCanvas() {
                     ))}
             </div>
 
-            <p className="relative my-4 font-medium text-[#4F4F4F] text-[10px] md:text-[11px] xl:text-xs text-center">
+            <p className="relative mt-4 mb-20 font-medium text-[#4F4F4F] text-[10px] md:text-[11px] xl:text-xs text-center">
                 Word Count: {layout.body.length}/{MAX_BODY}
             </p>
         </main>

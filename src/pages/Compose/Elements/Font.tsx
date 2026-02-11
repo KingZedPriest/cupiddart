@@ -58,7 +58,9 @@ const Font = () => {
             {/* Horizontal alignment */}
             <div onClick={() => toggleOpen("horizontal")} className={`grid place-content-center size-8 border rounded-full cursor-pointer duration-200 ${open === "horizontal"
                 ? "border-destructive" : "border-[#E5E7E3] hover:text-destructive"}`}>
-                <AlignLeft className="size-5" />
+                {currentFont.horizontalAlign === "center" ?
+                    <AlignHorizontally className="size-5" /> : currentFont.horizontalAlign === "right" ?
+                        <AlignRight className="size-5" /> : <AlignLeft className="size-5" />}
 
                 {open === "horizontal" && (
                     <section className="bottom-14 left-[55%] absolute flex gap-x-2 bg-white p-1 rounded-full">
@@ -80,7 +82,9 @@ const Font = () => {
             {/* Vertical alignment */}
             <div onClick={() => toggleOpen("vertical")} className={`grid place-content-center size-8 border rounded-full cursor-pointer duration-200 ${open === "vertical"
                 ? "border-destructive" : "border-[#E5E7E3] hover:text-destructive"}`}>
-                <AlignTop className="size-5" />
+                {currentFont.verticalAlign === "center" ?
+                    <AlignVertically className="size-5" /> : currentFont.verticalAlign === "flex-end" ?
+                        <AlignBottom className="size-5" /> : <AlignTop className="size-5" />}
 
                 {open === "vertical" && (
                     <section className="bottom-14 left-[62%] absolute flex gap-x-2 bg-white p-1 rounded-full">

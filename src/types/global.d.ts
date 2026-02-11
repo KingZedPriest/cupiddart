@@ -52,6 +52,7 @@ declare type Preferences = {
 
 // Letter Layout
 declare type LetterLayout = {
+  currentZIndex: number;
   title: string;
   body: string;
   media: Picture[];

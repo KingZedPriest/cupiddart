@@ -24,11 +24,9 @@ const Select = () => {
         setOptions(prevOption => (prevOption === option ? null : option));
     };
 
-    const zIndex = Date.now();
-
     return (
         <>
-            <main className="relative flex justify-between gap-x-3 bg-white drop-shadow-lg mx-auto mt-20 rounded-4xl w-fit">
+            <main className="bottom-4 left-1/2 fixed flex justify-between gap-x-3 bg-white drop-shadow-lg mx-auto rounded-4xl w-fit -translate-x-1/2">
                 <div className="flex items-center gap-x-2 p-1">
                     <div onClick={() => toggleOption("bg")} className={`bg-[#8125AF] relative rounded-full size-8 cursor-pointer border ${options === "bg" ? "border-destructive" : "border-[#E5E7E3]"}`}>
                         {options === "bg" && <Tag text="Background Themes" />}
@@ -53,7 +51,7 @@ const Select = () => {
                     )}
                 </AnimatePresence>
 
-                {options !== null && <div className="hidden min-[600px]:block bg-[#E5E7E3] w-0.5"></div>}
+                {options === "text" && <div className="hidden min-[600px]:block bg-[#E5E7E3] w-0.5"></div>}
                 <div className="p-1">
                     <Link to="/preferences" disabled={!layout.body.trim() || !layout.title.trim()} className="flex items-center gap-x-2 bg-destructive hover:bg-white px-3 py-2 border border-destructive rounded-full text-white hover:text-destructive duration-200 cursor-pointer">
                         Continue
@@ -61,8 +59,8 @@ const Select = () => {
                     </Link>
                 </div>
             </main>
-            {options === "bg" && <BackgroundSelector zIndex={zIndex} onClose={() => toggleOption(null)} />}
-            {options === "elements" && <Element zIndex={zIndex} onClose={() => toggleOption(null)} />}
+            {options === "bg" && <BackgroundSelector zIndex={50} onClose={() => toggleOption(null)} />}
+            {options === "elements" && <Element zIndex={50} onClose={() => toggleOption(null)} />}
         </>
     );
 }

@@ -29,7 +29,6 @@ const Element = ({ zIndex, onClose }: { zIndex: number, onClose: () => void }) =
             width: sticker.defaultWidth,
             height: sticker.defaultHeight,
             rotation: 0,
-            zIndex: Date.now(),
         });
         onClose();
     }
