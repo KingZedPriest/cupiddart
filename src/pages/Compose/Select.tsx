@@ -63,7 +63,7 @@ const Select = () => {
 
                 {options === "text" && <div className="hidden min-[600px]:block bg-[#E5E7E3] w-0.5"></div>}
                 <div className="p-1">
-                    <Link to="/preferences" search={{ page: undefined }} disabled={!layout.body.trim() || !layout.title.trim()} className="flex items-center gap-x-2 bg-destructive hover:bg-white px-3 py-2 border border-destructive rounded-full text-white hover:text-destructive duration-200 cursor-pointer">
+                    <Link to="/preferences" disabled={!layout.body.trim() || !layout.title.trim()} className="flex items-center gap-x-2 bg-destructive hover:bg-white px-3 py-2 border border-destructive rounded-full text-white hover:text-destructive duration-200 cursor-pointer">
                         Continue
                         <ArrowRight className="size-4" />
                     </Link>
