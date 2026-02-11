@@ -35,12 +35,22 @@ const Select = () => {
                         <ElementPlus className="size-5" />
                         {options === "elements" && <Tag text="Elements" />}
                     </div>
-                    <div onClick={() => toggleOption("text")} className={`hidden min-[600px]:grid size-8 relative border hover:text-destructive duration-200 rounded-full place-content-center cursor-pointer ${options === "text" ? "border-destructive" : "border-[#E5E7E3]"}`}>
+                    <div onClick={() => toggleOption("text")} className={`grid size-8 relative border hover:text-destructive duration-200 rounded-full place-content-center cursor-pointer ${options === "text" ? "border-destructive" : "border-[#E5E7E3]"}`}>
                         <Text className="size-5" />
                         {options === "text" && <Tag text="Text Style" />}
                     </div>
                 </div>
                 <div className="bg-[#E5E7E3] w-0.5"></div>
+
+                <AnimatePresence>
+                    {options === "text" && (
+                        <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }} className="min-[600px]:hidden bottom-12 left-1/2 fixed bg-white drop-shadow-lg mx-auto p-1.5 rounded-4xl w-fit h-full -translate-x-1/2">
+                            <Font />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
 
                 <AnimatePresence>
                     {options === "text" && (
@@ -53,7 +63,7 @@ const Select = () => {
 
                 {options === "text" && <div className="hidden min-[600px]:block bg-[#E5E7E3] w-0.5"></div>}
                 <div className="p-1">
-                    <Link to="/preferences" disabled={!layout.body.trim() || !layout.title.trim()} className="flex items-center gap-x-2 bg-destructive hover:bg-white px-3 py-2 border border-destructive rounded-full text-white hover:text-destructive duration-200 cursor-pointer">
+                    <Link to="/preferences" search={{ page: undefined }} disabled={!layout.body.trim() || !layout.title.trim()} className="flex items-center gap-x-2 bg-destructive hover:bg-white px-3 py-2 border border-destructive rounded-full text-white hover:text-destructive duration-200 cursor-pointer">
                         Continue
                         <ArrowRight className="size-4" />
                     </Link>
