@@ -21,6 +21,7 @@
         "lucide-react": "^0.561.0",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
+        "react-fox-toast": "^1.10.20",
         "react-rnd": "^10.5.2",
         "tailwind-merge": "^3.0.2",
         "tailwindcss": "^4.0.6",
@@ -1349,6 +1350,8 @@
     "react-dom": ["react-dom@19.2.4", "", { "dependencies": { "scheduler": "^0.27.0" }, "peerDependencies": { "react": "^19.2.4" } }, "sha512-AXJdLo8kgMbimY95O2aKQqsz2iWi9jMgKJhRBAxECE4IFxfcazB2LmzloIoibJI3C12IlY20+KFaLv+71bUJeQ=="],
 
     "react-draggable": ["react-draggable@4.4.6", "", { "dependencies": { "clsx": "^1.1.1", "prop-types": "^15.8.1" }, "peerDependencies": { "react": ">= 16.3.0", "react-dom": ">= 16.3.0" } }, "sha512-LtY5Xw1zTPqHkVmtM3X8MUOxNDOUhv/khTgBgrUvwaS064bwVvxT+q5El0uUFNx5IEPKXuRejr7UqLwBIg5pdw=="],
+
+    "react-fox-toast": ["react-fox-toast@1.10.20", "", { "peerDependencies": { "goober": "^2.1.16", "react": ">16.0.0", "react-dom": ">16.0.0" } }, "sha512-MTOgp6dXm9g/LEDNpPwZDFFwduZKlnTGnNb0BEaD1h3vTvP6VVRGZwHD/+nbfbgcm4vd5Ryk3KSGzdVFuAdKCw=="],
 
     "react-is": ["react-is@17.0.2", "", {}, "sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w=="],
 

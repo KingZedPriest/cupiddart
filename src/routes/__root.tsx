@@ -2,6 +2,7 @@ import { HeadContent, Scripts, createRootRouteWithContext } from '@tanstack/reac
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
+import { ToastContainer } from 'react-fox-toast';
 
 // Types
 import type { QueryClient } from '@tanstack/react-query';
@@ -58,6 +59,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        <ToastContainer position="top-center" isPausedOnHover={true} duration={5000} />
         <TanStackDevtools config={{ position: 'bottom-right' }}
           plugins={[{ name: 'Tanstack Router', render: <TanStackRouterDevtoolsPanel /> }, TanStackQueryDevtools]} />
         <Scripts />

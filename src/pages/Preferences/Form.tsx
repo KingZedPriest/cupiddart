@@ -1,11 +1,16 @@
 import { useRouter } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
+import { Route } from "@/routes/preferences";
+import { toast } from "react-fox-toast";
 
 // Stores
 import { useEditorStore } from "@/stores/editor.store";
 
-// Icons
-import { CloseCircle } from "iconsax-reactjs";
+// UIs
 import SchedulePicker from "./DateTime";
+
+// Icons
+import { ArrowRight, CloseCircle } from "iconsax-reactjs";
 
 const REVEAL_OPTIONS = [
     { heading: "Reveal Immediately", subheading: "They’ll see your name right away", option: "now" },
@@ -24,9 +29,27 @@ const Form = () => {
     const { layout, updatePreference } = useEditorStore();
     const preferences = layout.preferences;
 
+    const navigate = useNavigate({ from: Route.fullPath });
+
+    // Functions
+    const setPage = (page: number) => {
+        if (!layout.title.trim() || !layout.body.trim()) {
+            toast.error("No Letter Title or Body Found, Kindly Restart.");
+            navigate({ to: "/compose" })
+        } else {
+            navigate({
+                search: (prev) => ({
+                    ...prev,
+                    page
+                })
+            })
+        }
+
+    }
+
     return (
         <main className="relative bg-white p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 rounded-4xl max-w-136.5 max-h-174">
-            <button onClick={() => router.history.back()} className="group -top-10 right-0 absolute flex items-center gap-x-1 bg-[#F0F0F0]/90 hover:bg-destructive px-2 py-1 rounded-4xl hover:text-white duration-200 cursor-pointer">
+            <button onClick={() => router.history.back()} className="group -top-10 right-0 absolute flex items-center gap-x-1 bg-[#F0F0F0]/90 hover:bg-destructive px-2 py-1 rounded-4xl outline-0 hover:text-white duration-200 cursor-pointer">
                 <CloseCircle variant="Bold" className="size-4 text-[#DB2863] group-hover:text-white" />
                 <p className="text-[8px] md:text-[9px] xl:text-[10px]">Cancel</p>
             </button>
@@ -74,6 +97,10 @@ const Form = () => {
                 {preferences.send === "later" &&
                     <SchedulePicker />
                 }
+                <button onClick={() => setPage(2)} className="flex items-center gap-x-2 bg-destructive hover:bg-inherit mt-14 mb-8 ml-auto px-4 py-2.5 hover:border hover:border-destructive rounded-4xl font-semibold text-[11px] text-white hover:text-destructive md:text-xs xl:text-sm duration-200 cursor-pointer">
+                    Continue
+                    <ArrowRight className="size-4" />
+                </button>
             </section>
         </main>
     );
