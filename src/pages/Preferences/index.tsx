@@ -4,7 +4,6 @@ import { Route } from "@/routes/preferences";
 import Form from "./Form";
 import Form1 from "./Form1";
 import Form2 from "./Form2";
-import Form3 from "./Form3";
 
 const Index = () => {
 
@@ -18,7 +17,6 @@ const Index = () => {
                 {search.page === 1 && <Form />}
                 {search.page === 2 && <Form1 />}
                 {search.page === 3 && <Form2 />}
-                {search.page === 4 && <Form3 />}
             </section>
         </main>
     );
