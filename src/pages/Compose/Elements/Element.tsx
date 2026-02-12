@@ -6,8 +6,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEditorStore } from "@/stores/editor.store";
 import { FRAMES, PAPERS, STICKERS } from "@/constants/editing";
 
-// Icons
-import { CloseCircle } from "iconsax-reactjs";
+// UIs
+import CloseBtn from "@/components/CloseBtn";
 
 const PREV_STICKERS = [STICKERS[2], STICKERS[6], STICKERS[5], STICKERS[4], STICKERS[0]];
 const OTHER_STICKERS = STICKERS.filter(sticker => !PREV_STICKERS.includes(sticker));
@@ -37,10 +37,8 @@ const Element = ({ zIndex, onClose }: { zIndex: number, onClose: () => void }) =
         <AnimatePresence>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 flex justify-center items-center bg-black/40 p-2 w-full h-full" style={{ zIndex }} onClick={onClose}>
                 <motion.main initial={{ scale: 0.95 }} animate={{ scale: 1 }} exit={{ scale: 0.95 }} className="relative bg-white p-4 md:p-5 xl:p-6 rounded-4xl" onClick={(e) => e.stopPropagation()}>
-                    <button onClick={onClose} className="group -top-10 right-0 absolute flex items-center gap-x-1 bg-[#F0F0F0]/90 hover:bg-destructive px-2 py-1 rounded-4xl hover:text-white duration-200 cursor-pointer">
-                        <CloseCircle variant="Bold" className="size-4 text-[#DB2863] group-hover:text-white" />
-                        <p className="text-[8px] md:text-[9px] xl:text-[10px]">Close</p>
-                    </button>
+
+                    <CloseBtn onClose={onClose} title="Close" />
 
                     <p className="font-bold text-[10px] md:text-[11px] xl:text-xs">Elements</p>
                     <section className="mt-6 md:mt-7 xl:mt-8">
@@ -60,7 +58,7 @@ const Element = ({ zIndex, onClose }: { zIndex: number, onClose: () => void }) =
                             ))}
                         </div>
                     </section>
-                    
+
                     <section className="mt-6 md:mt-7 xl:mt-8">
                         <div className="flex justify-between items-center">
                             <p className="font-medium text-[8px] md:text-[9px] xl:text-[10px] text-accent-foreground/40">Stickers (18)</p>

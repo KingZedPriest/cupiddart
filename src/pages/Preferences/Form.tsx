@@ -8,9 +8,10 @@ import { useEditorStore } from "@/stores/editor.store";
 
 // UIs
 import SchedulePicker from "./DateTime";
+import CloseBtn from "@/components/CloseBtn";
 
 // Icons
-import { ArrowRight, CloseCircle } from "iconsax-reactjs";
+import { ArrowRight } from "iconsax-reactjs";
 
 const REVEAL_OPTIONS = [
     { heading: "Reveal Immediately", subheading: "They’ll see your name right away", option: "now" },
@@ -48,11 +49,9 @@ const Form = () => {
     }
 
     return (
-        <main className="relative bg-white p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 rounded-4xl max-w-136.5 max-h-174">
-            <button onClick={() => router.history.back()} className="group -top-10 right-0 absolute flex items-center gap-x-1 bg-[#F0F0F0]/90 hover:bg-destructive px-2 py-1 rounded-4xl outline-0 hover:text-white duration-200 cursor-pointer">
-                <CloseCircle variant="Bold" className="size-4 text-[#DB2863] group-hover:text-white" />
-                <p className="text-[8px] md:text-[9px] xl:text-[10px]">Cancel</p>
-            </button>
+        <main className="relative bg-white p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 rounded-4xl w-full max-w-136.5 max-h-174">
+
+            <CloseBtn onClose={() => router.history.back()} title="Cancel" />
 
             <section className="flex justify-between">
                 <div>
