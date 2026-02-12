@@ -25,7 +25,7 @@ const Form2 = () => {
     const [timer, setTimer] = useState<number>(180);
     const navigate = useNavigate({ from: Route.fullPath });
     const [canResend, setCanResend] = useState<boolean>(false);
-    const [isSuccess, setIsSuccess] = useState<boolean>(true);
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
     const { preferences } = useEditorStore((s) => s.layout);
 

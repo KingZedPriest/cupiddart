@@ -21,7 +21,7 @@ const Success = () => {
         });
 
         // Then confetti rain
-        const duration = 2500;
+        const duration = 3500;
         const animationEnd = Date.now() + duration;
 
         const interval = setInterval(() => {
@@ -31,8 +31,8 @@ const Success = () => {
             }
 
             confetti({
-                particleCount: 6,
-                spread: 70,
+                particleCount: 120,
+                spread: 360,
                 startVelocity: 30,
                 origin: {
                     x: Math.random(),
